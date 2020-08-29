@@ -233,7 +233,7 @@ def print_table(table,
 
     if show_in_python:
         try:
-            render_mpl_table(table, header_columns=0, col_width=3.0)
+            render_mpl_table(table.round(3), header_columns=0, col_width=3.0)
         except IndexError:
             pass
 

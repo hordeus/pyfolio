@@ -650,7 +650,7 @@ def show_perf_stats(returns, factor_returns=None, positions=None,
                 perf_stats.loc[stat, column] = str(np.round(value * 100,
                                                             3)) + '%'
             else:
-                perf_stats.loc[stat, column] = str(np.round(value,2))
+                perf_stats.loc[stat, column] = str(np.round(value,3))
 
     if header_rows is None:
         header_rows = date_rows
@@ -1672,6 +1672,7 @@ def show_worst_drawdown_periods(returns, top=5):
     """
 
     drawdown_df = timeseries.gen_drawdown_table(returns, top=top)
+    # drawdown_df = drawdown_df.round(2)
     utils.print_table(
         drawdown_df.sort_values('Net drawdown in %', ascending=False),
         name='Worst drawdown periods',
